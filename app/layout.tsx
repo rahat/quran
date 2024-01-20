@@ -1,6 +1,12 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from "@/components/theme-provider"
+import { Navbar } from '@/components/ui/nav-bar';
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from "@/components/ui/resizable"
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -26,7 +32,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
           >
-          {children}
+          <ResizablePanelGroup direction="horizontal">
+            <ResizablePanel defaultSize={10}><Navbar /></ResizablePanel>
+            <ResizableHandle />
+            <ResizablePanel defaultSize={90}>{children}</ResizablePanel>
+          </ResizablePanelGroup>
         </ThemeProvider>
       </body>
     </html>
