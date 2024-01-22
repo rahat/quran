@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Separator } from "@/components/ui/separator"
-import database from '../../database/info.json'
+import database from '../../database/info.min.json'
 
 export function Navbar() {
     const pathname = usePathname();
