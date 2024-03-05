@@ -4,6 +4,10 @@
 
 A modern web application designed to provide an intuitive and immersive experience for reading the Holy Quran. Built on the robust Next.js framework, this app leverages Radix UI along with Tailwind CSS for a seamless and responsive user interface.
 
+## Preview
+
+![Quran App](https://github.com/rahat/quran/assets/4211136/afab2585-8987-463b-ba59-f6fc06cd7ce3)
+
 ## Getting Started
 
 ### Prerequisites
