@@ -62,7 +62,7 @@ export default function Page({ params }: { params: Params }) {
 
     useEffect(() => {
         localStorage.setItem('translation', JSON.stringify(translation));
-      }, [translation]);
+    }, [translation]);
 
     useEffect(() => {
         setLoading(true);
@@ -88,24 +88,24 @@ export default function Page({ params }: { params: Params }) {
 
     return (
         <>
-        <div className='ml-5'>
-            <Select onValueChange={setTranslation}
-                defaultValue={translation}>
-                <SelectTrigger className="w-[480px]">
-                    <SelectValue placeholder="Select Translation" />
-                </SelectTrigger>
-                <SelectContent>
-                    <SelectGroup>
-                        {editions && Object.values(editions).map((edition) => (
-                            <SelectItem value={edition.name}>
-                                {edition.language} - {edition.author}
-                            </SelectItem>
-                        ))}
-                    </SelectGroup>
-                </SelectContent>
-            </Select>
+            <div className='ml-5'>
+                <Select onValueChange={setTranslation}
+                    defaultValue={translation}>
+                    <SelectTrigger className="w-[480px]">
+                        <SelectValue placeholder="Select Translation" />
+                    </SelectTrigger>
+                    <SelectContent>
+                        <SelectGroup>
+                            {editions && Object.values(editions).map((edition, index) => (
+                                <SelectItem key={edition.name} value={edition.name}>
+                                    {edition.language} - {edition.author}
+                                </SelectItem>
+                            ))}
+                        </SelectGroup>
+                    </SelectContent>
+                </Select>
             </div>
-            {data && data.chapter && data.chapter.map((entry) => (
+            {data?.chapter?.map((entry) => (
                 <Card key={entry.chapter} className="m-5">
                     <CardHeader>
                         <CardTitle>Chapter {entry.chapter}</CardTitle>
