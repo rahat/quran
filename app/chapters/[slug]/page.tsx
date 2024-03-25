@@ -98,7 +98,11 @@ export default function Page({ params }: { params: Params }) {
                         <SelectGroup>
                             {editions && Object.values(editions).map((edition, index) => (
                                 <SelectItem key={edition.name} value={edition.name}>
-                                    {edition.language} - {edition.author}
+                                    {edition.link.endsWith('-la.json')
+                                        ? `${edition.language} - ${edition.author} - Latin Script`
+                                        : edition.link.endsWith('-lad.json')
+                                            ? `${edition.language} - ${edition.author} - Latin Script with Diacritical Marks`
+                                            : `${edition.language} - ${edition.author}`}
                                 </SelectItem>
                             ))}
                         </SelectGroup>
