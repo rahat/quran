@@ -33,7 +33,7 @@ export default function RootLayout({
           disableTransitionOnChange
           >
           <ResizablePanelGroup direction="horizontal">
-            <ResizablePanel defaultSize={10}><Navbar /></ResizablePanel>
+            <ResizablePanel defaultSize={10} minSize={10}><Navbar /></ResizablePanel>
             <ResizableHandle />
             <ResizablePanel defaultSize={90}>{children}</ResizablePanel>
           </ResizablePanelGroup>
