@@ -58,7 +58,11 @@ export default function Page({ params }: { params: Params }) {
     const [data, setData] = useState<Root>();
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string>('');
-    const [translation, setTranslation] = useState('eng-abdullahyusufal');
+    const [translation, setTranslation] = useState(() => JSON.parse(localStorage.getItem('translation')) || 'eng-abdullahyusufal');
+
+    useEffect(() => {
+        localStorage.setItem('translation', JSON.stringify(translation));
+      }, [translation]);
 
     useEffect(() => {
         setLoading(true);
