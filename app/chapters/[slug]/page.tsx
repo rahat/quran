@@ -7,10 +7,23 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
+
 import { useState, useEffect } from "react";
 
-async function fetchData(slug: number) {
-    const response = await fetch(`/eng-abdullahyusufal/${slug}.json`,
+import editions from '@/database/editions.json';
+
+async function fetchData(translation: string, slug: number) {
+    const response = await fetch(`/${translation}/${slug}.json`,
         {
             headers: {
                 'Content-Type': 'application/json',
@@ -45,10 +58,11 @@ export default function Page({ params }: { params: Params }) {
     const [data, setData] = useState<Root>();
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string>('');
+    const [translation, setTranslation] = useState('eng-abdullahyusufal');
 
     useEffect(() => {
         setLoading(true);
-        fetchData(slug)
+        fetchData(translation, slug)
             .then((res) => {
                 setData(res);
                 setLoading(false);
@@ -58,7 +72,7 @@ export default function Page({ params }: { params: Params }) {
                 setError('An error occurred while fetching data.');
                 setLoading(false);
             });
-    }, [slug]);
+    }, [translation, slug]);
 
     if (loading) {
         return <div>Loading...</div>;
@@ -70,6 +84,21 @@ export default function Page({ params }: { params: Params }) {
 
     return (
         <>
+            <Select onValueChange={setTranslation}
+                defaultValue={translation}>
+                <SelectTrigger className="w-[480px]">
+                    <SelectValue placeholder="Select Translation" />
+                </SelectTrigger>
+                <SelectContent>
+                    <SelectGroup>
+                        {editions && Object.values(editions).map((edition) => (
+                            <SelectItem value={edition.name}>
+                                {edition.language} - {edition.author}
+                            </SelectItem>
+                        ))}
+                    </SelectGroup>
+                </SelectContent>
+            </Select>
             {data && data.chapter && data.chapter.map((entry) => (
                 <Card key={entry.chapter} className="m-5">
                     <CardHeader>
