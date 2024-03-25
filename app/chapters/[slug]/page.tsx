@@ -84,6 +84,7 @@ export default function Page({ params }: { params: Params }) {
 
     return (
         <>
+        <div className='ml-5'>
             <Select onValueChange={setTranslation}
                 defaultValue={translation}>
                 <SelectTrigger className="w-[480px]">
@@ -99,6 +100,7 @@ export default function Page({ params }: { params: Params }) {
                     </SelectGroup>
                 </SelectContent>
             </Select>
+            </div>
             {data && data.chapter && data.chapter.map((entry) => (
                 <Card key={entry.chapter} className="m-5">
                     <CardHeader>
