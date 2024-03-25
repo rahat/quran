@@ -29,6 +29,9 @@ export function Navbar() {
                                     <div className="text-sm">
                                         {item.chapter}. {item.name}
                                     </div>
+                                    <div className="text-sm">
+                                        {item.englishname}
+                                    </div>
                                 </Link>
                                 <Separator className="my-2" />
                             </React.Fragment>
