@@ -106,7 +106,7 @@ export default function Page({ params }: { params: Params }) {
                 </Select>
             </div>
             {data?.chapter?.map((entry) => (
-                <Card key={entry.chapter} className="m-5">
+                <Card key={entry.verse} className="m-5">
                     <CardHeader>
                         <CardTitle>Chapter {entry.chapter}</CardTitle>
                         <CardDescription>Verse {entry.verse}</CardDescription>
